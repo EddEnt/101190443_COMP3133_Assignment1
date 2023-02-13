@@ -1,0 +1,19 @@
+{
+  "name": "101190443_comp3133_assignment1",
+  "version": "1.0.0",
+  "description": "COMP3133 Full Stack Development II Assignment 1 Repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Edward Entecott - 101190443",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.11.1",
+    "graphql": "^16.6.0",
+    "mongoose": "^6.9.1",
+    "nodemon": "^2.0.20"
+  }
+}
