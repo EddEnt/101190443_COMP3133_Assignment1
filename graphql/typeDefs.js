@@ -1,14 +1,12 @@
 const { gql } = require("apollo-server");
 
 module.exports = gql`
-
-  """
-  ! means required field
-  getEmployee returns one employee by ID
-  getAllEmployees returns all employees
-
-  """
-  # ! means required field
+  type User {
+    username: String
+    email: String
+    password: String
+    token: String
+  }
 
   type Employee {
     first_name: String
@@ -16,6 +14,17 @@ module.exports = gql`
     email: String
     gender: String
     salary: Float
+  }
+
+  input RegisterInput {
+    username: String
+    email: String
+    password: String
+  }
+
+  input LoginInput {
+    email: String
+    password: String
   }
 
   input EmployeeInput {
@@ -26,14 +35,23 @@ module.exports = gql`
     salary: Float
   }
 
+  input updateEmployeeInput {
+    first_name: String
+    last_name: String
+    email: String
+  }
+
   type Query {
-    getEmployee(ID: ID!): Employee!  
-    getAllEmployees(): [Employee]  
+    user(id: ID!): User
+    employeeByID(id: ID!): Employee
+    viewAllEmployees: [Employee!]!
   }
 
   type Mutation {
-    createEmployee(employeeInput: EmployeeInput): Employee!
-    updateEmployee(ID: ID!, employeeInput: EmployeeInput): Employee!
-    deleteEmployee(ID: ID!): Boolean
+    registerUser(registerInput: RegisterInput): User
+    loginUser(loginInput: LoginInput): User
+    createEmployee(employeeInput: EmployeeInput): Employee
+    updateEmployee(id: ID!, employeeInput: EmployeeInput): Employee
+    deleteEmployee(id: ID!): Boolean
   }
 `;
